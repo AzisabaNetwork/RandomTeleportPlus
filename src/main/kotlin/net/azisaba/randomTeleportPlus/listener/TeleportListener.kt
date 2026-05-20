@@ -35,7 +35,7 @@ class TeleportListener(private val plugin: RandomTeleportPlus) : Listener {
             }
             val worldName = sign.getLine(2)
             val world = Bukkit.getWorld(worldName)
-            if (world == null) {
+            if (world == null || !configuration.isEnabledWorld(world.name)) {
                 player.sendLangMessage("not-enabled-world")
                 return
             }
@@ -70,8 +70,9 @@ class TeleportListener(private val plugin: RandomTeleportPlus) : Listener {
             }
             val worldName = event.getLine(1) ?: ""
             val world = Bukkit.getWorld(worldName)
-            if (world == null) {
+            if (world == null || !configuration.isEnabledWorld(world.name)) {
                 player.sendLangMessage("not-enabled-world")
+                event.isCancelled = true
                 return
             }
 
