@@ -16,3 +16,5 @@ permissions:
   randomteleportplus.admin:
     description: "Allows access to admin commands and features."
     default: op
+  randomteleportplus.general:
+    description: "Only Teleport"
