@@ -8,7 +8,7 @@ website: https://github.com/AzisabaNetwork/RandomTeleportPlus
 commands:
   randomteleport:
     description: "RandomTeleportPlus commands"
-    usage: /randomteleport [player]
+    usage: /randomteleport <command>
     aliases:
       - randomtp
       - rtp
