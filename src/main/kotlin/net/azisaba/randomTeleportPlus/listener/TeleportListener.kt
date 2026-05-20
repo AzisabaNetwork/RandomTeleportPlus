@@ -3,7 +3,7 @@ package net.azisaba.randomTeleportPlus.listener
 import net.azisaba.randomTeleportPlus.Permission
 import net.azisaba.randomTeleportPlus.RandomTeleportPlus
 import net.azisaba.randomTeleportPlus.RandomTeleportPlus.Companion.configuration
-import net.azisaba.randomTeleportPlus.manager.MessageManager.prefix
+import net.azisaba.randomTeleportPlus.manager.MessageManager
 import net.azisaba.randomTeleportPlus.manager.sendLangMessage
 import net.azisaba.randomTeleportPlus.util.runTaskSync
 import org.bukkit.Bukkit
@@ -35,7 +35,11 @@ class TeleportListener(private val plugin: RandomTeleportPlus) : Listener {
             }
             val worldName = sign.getLine(2)
             val world = Bukkit.getWorld(worldName)
-            if (world == null || !configuration.isEnabledWorld(world.name)) {
+            if (world == null) {
+                player.sendLangMessage("not-enabled-world")
+                return
+            }
+            if (!configuration.isEnabledWorld(world.name)) {
                 player.sendLangMessage("not-enabled-world")
                 return
             }
@@ -70,14 +74,19 @@ class TeleportListener(private val plugin: RandomTeleportPlus) : Listener {
             }
             val worldName = event.getLine(1) ?: ""
             val world = Bukkit.getWorld(worldName)
-            if (world == null || !configuration.isEnabledWorld(world.name)) {
+            if (world == null) {
+                player.sendLangMessage("not-enabled-world")
+                event.isCancelled = true
+                return
+            }
+            if (!configuration.isEnabledWorld(world.name)) {
                 player.sendLangMessage("not-enabled-world")
                 event.isCancelled = true
                 return
             }
 
             event.setLine(0, "§e===============")
-            event.setLine(1, prefix)
+            event.setLine(1, MessageManager.coloredPrefix)
             event.setLine(2, world.name)
             event.setLine(3, "§e===============")
             player.sendLangMessage("teleporter-created")
@@ -85,7 +94,7 @@ class TeleportListener(private val plugin: RandomTeleportPlus) : Listener {
     }
 
     private fun Sign.isTeleportSign(): Boolean {
-        return getLine(1) == prefix
+        return getLine(1) == MessageManager.coloredPrefix
     }
 
     fun Player.randomTeleport(world: World) {

@@ -14,6 +14,8 @@ object MessageManager {
 
     var prefix: String = ""
         private set
+    var coloredPrefix: String = ""
+        private set
     private var defaultLang: String = "ja"
 
     fun init(plugin: RandomTeleportPlus) {
@@ -24,6 +26,7 @@ object MessageManager {
         plugin.reloadConfig()
 
         prefix = plugin.config.getString("prefix") ?: "&e[&6Random&aTeleport&e]"
+        coloredPrefix = ChatColor.translateAlternateColorCodes('&', prefix)
         defaultLang = plugin.config.getString("default_language")?.lowercase() ?: "ja"
 
         val msgFolder = File(plugin.dataFolder, "messages")
