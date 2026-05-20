@@ -14,6 +14,8 @@ class TeleportCommandTabCompleter(private val plugin: RandomTeleportPlus) : TabC
             completions.add("help")
             if (sender.hasPermission(Permission.ADMIN)) {
                 completions.add("reload")
+                completions.add("addworld")
+                completions.add("delworld")
             }
             return completions.filter { it.startsWith(args[0], ignoreCase = true) }.toMutableList()
         }

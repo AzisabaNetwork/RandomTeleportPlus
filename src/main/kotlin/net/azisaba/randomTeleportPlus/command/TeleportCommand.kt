@@ -9,6 +9,7 @@ import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
+import org.bukkit.Bukkit
 
 class TeleportCommand(private val plugin : RandomTeleportPlus) : CommandExecutor {
 
@@ -48,6 +49,39 @@ class TeleportCommand(private val plugin : RandomTeleportPlus) : CommandExecutor
                 plugin.reloadConfig()
                 configuration.loadConfig()
                 sender.sendLangMessage("config-reload-success")
+                return true
+            }
+            "addworld" -> {
+                if (!sender.hasPermission(Permission.ADMIN)) {
+                    sender.sendLangMessage("no-permission")
+                    return true
+                }
+                val worldName = args.getOrNull(1)
+                if (worldName == null) {
+                    sender.sendLangMessage("world-not-specified")
+                    return true
+                }
+                val world = Bukkit.getWorld(worldName)
+                if (world == null) {
+                    sender.sendLangMessage("world-not-found")
+                    return true
+                }
+                configuration.addWorld(world.name)
+                sender.sendLangMessage("world-added", "world" to world.name)
+                return true
+            }
+            "delworld" -> {
+                if (!sender.hasPermission(Permission.ADMIN)) {
+                    sender.sendLangMessage("no-permission")
+                    return true
+                }
+                val worldName = args.getOrNull(1)
+                if (worldName == null) {
+                    sender.sendLangMessage("world-not-specified")
+                    return true
+                }
+                configuration.removeWorld(worldName)
+                sender.sendLangMessage("world-removed", "world" to worldName)
                 return true
             }
         }

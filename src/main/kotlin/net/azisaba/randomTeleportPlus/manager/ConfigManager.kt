@@ -1,7 +1,6 @@
 package net.azisaba.randomTeleportPlus.manager
 
 import net.azisaba.randomTeleportPlus.RandomTeleportPlus.Companion.instance
-import org.bukkit.ChatColor
 
 class ConfigManager {
 
@@ -22,6 +21,18 @@ class ConfigManager {
         enabledWorlds.addAll(worlds)
 
         instance.logger.info("loaded configuration")
+    }
+
+    fun addWorld(worldName: String) {
+        enabledWorlds.add(worldName)
+        instance.config.set("enable-world", enabledWorlds.toList())
+        instance.saveConfig()
+    }
+
+    fun removeWorld(worldName: String) {
+        enabledWorlds.remove(worldName)
+        instance.config.set("enable-world", enabledWorlds.toList())
+        instance.saveConfig()
     }
 
     fun isEnabledWorld(worldName: String): Boolean {
