@@ -1,0 +1,18 @@
+name: RandomTeleportPlus
+description: An advanced, highly configurable Random Teleport solution.
+version: '${version}'
+main: net.azisaba.randomTeleportPlus.RandomTeleportPlus
+api-version: '1.15'
+authors: [ Azisaba Network ]
+website: https://github.com/AzisabaNetwork/RandomTeleportPlus
+commands:
+  randomteleport:
+    description: "RandomTeleportPlus commands"
+    usage: /randomteleport [player]
+    aliases:
+      - randomtp
+      - rtp
+permissions:
+  randomteleportplus.admin:
+    description: "Allows access to admin commands and features."
+    default: op

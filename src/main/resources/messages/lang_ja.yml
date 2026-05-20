@@ -1,0 +1,8 @@
+no-permission: "&cあなたに権限はありません。"
+not-enabled-world: "&cこのワールドではランダムテレポートは無効です。"
+config-reload-success: "&a設定を再読み込みしました。"
+teleporting: "&aランダムテレポートしています..."
+safe-location-found: "&a安全な場所が見つかりました！"
+safe-location-not-found: "&c安全な場所が見つかりませんでした。"
+teleporter-created: "&aランダムテレポート看板を作成しました。"
+teleporter-deleted: "&aランダムテレポート看板を削除しました。"

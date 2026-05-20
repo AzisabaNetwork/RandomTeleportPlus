@@ -1,0 +1,24 @@
+# RandomTeleportPlus Configuration
+
+# Prefix for messages (used if not specified in language files or for some legacy messages)
+prefix: "&e[&6Random&aTeleport&e]"
+
+# Default language to use (ja or en)
+default_language: "ja"
+
+# Safety teleport (if true, places a stone block at the teleport location)
+forceSafety: false
+
+# Worlds where players can use random teleport command.
+enable-world:
+  - "world"
+  - "world_nether"
+  - "world_the_end"
+
+# Help messages
+help-message:
+  - "&e========= &6RandomTeleportPlus &e========="
+  - "&6/randomtp &7- 現在のワールドでランダムテレポートします"
+  - "&6/randomtp help &7- ヘルプを表示します"
+  - "&6/randomtp reload &7- 設定を再読み込みします (Admin)"
+  - "&e====================================="

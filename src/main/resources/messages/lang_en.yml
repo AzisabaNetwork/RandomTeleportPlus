@@ -1,0 +1,8 @@
+no-permission: "&cYou do not have permission."
+not-enabled-world: "&cRandom teleport is not enabled in this world."
+config-reload-success: "&aConfiguration reloaded successfully."
+teleporting: "&aTeleporting randomly..."
+safe-location-found: "&aSafe location found!"
+safe-location-not-found: "&cCould not find a safe location."
+teleporter-created: "&aRandom teleport sign created."
+teleporter-deleted: "&aRandom teleport sign deleted."
